@@ -1,0 +1,72 @@
+<div class="loading-shade" *ngIf="isLoading">
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+</div>
+<mat-card class="auth-card">
+  <mat-card-content>
+    <form *ngIf="loginForm" [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)" class="form">
+      <table cellspacing="0">
+        <tr>
+          <td colspan="2">
+            <h3>Sign in to your account</h3>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <mat-form-field class="auth-full-width">
+              <input matInput placeholder="Email" formControlName="email" />
+              <mat-error *ngIf="
+                  !loginForm.controls['email'].valid &&
+                  loginForm.controls['email'].touched
+                ">
+                {{ getErrorEmail() }}
+              </mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <mat-form-field class="auth-full-width">
+              <input matInput placeholder="Enter your password" formControlName="password"
+                [type]="hide ? 'password' : 'text'" />
+              <button mat-icon-button matSuffix type="button" (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+                <mat-icon>{{
+                  hide ? "visibility_off" : "visibility"
+                }}</mat-icon>
+              </button>
+              <mat-error *ngIf="
+                  !loginForm.controls['password'].valid &&
+                  loginForm.controls['password'].touched
+                ">
+                {{ getErrorPassword() }}
+              </mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-checkbox formControlName="checked">Remember me.</mat-checkbox>
+          </td>
+          <td>
+            <a (click)="onForgotPassword()" class="link-color">Don’t remember your password?</a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button mat-raised-button color="primary" type="submit" class="button" [disabled]="!loginForm.valid">
+              Sign In
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>
+              Don’t have an account?
+              <b><a (click)="onNewRegister()" class="link-color">Sign up.</a></b>
+            </p>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </mat-card-content>
+</mat-card>

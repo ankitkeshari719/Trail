@@ -1,0 +1,73 @@
+<div class="loading-shade" *ngIf="isLoading">
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+</div>
+<div class="row module-container dialog-container">
+  <div class="col-lg-12">
+    <form *ngIf="userForm" [formGroup]="userForm" #formDirective="ngForm"
+      (ngSubmit)="editProjectEndurance(userForm.value, formDirective)" class="form">
+      <table class="commons-full-width">
+        <tr>
+          <td>
+            <mat-form-field class="commons-full-width">
+              <input matInput placeholder="Endurance Cycle Name" formControlName="enduranceCycleName" />
+              <mat-error *ngIf="
+              !userForm.controls['enduranceCycleName'].valid &&
+              userForm.controls['enduranceCycleName'].touched
+            ">
+                {{ getEnduranceCycleNameError() }}
+              </mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="commons-full-width">
+              <input matInput placeholder="Instruction" formControlName="instruction" />
+              <mat-error *ngIf="
+              !userForm.controls['instruction'].valid &&
+              userForm.controls['instruction'].touched
+            ">
+                {{ getInstructionError() }}
+              </mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="commons-full-width">
+              <input matInput placeholder="Efforts" formControlName="efforts" />
+              <mat-error *ngIf="
+              !userForm.controls['efforts'].valid &&
+              userForm.controls['efforts'].touched
+            ">
+                {{ getEffortsError() }}
+              </mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="commons-full-width">
+              <input matInput placeholder="Unit" formControlName="unit" />
+              <mat-error *ngIf="
+              !userForm.controls['unit'].valid &&
+              userForm.controls['unit'].touched
+            ">
+                {{ getUnitError() }}
+              </mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr class="d-flex justify-content-end">
+          <td>
+            <button mat-raised-button class="button mr-2" type="button" color="warn" (click)="onNoClick()"
+              tabindex="-1">Cancel</button>
+            <button mat-raised-button color="primary" type="submit" [mat-dialog-close]="1" class="button"
+              [disabled]="!userForm.valid">
+              Edit Machine </button>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+</div>

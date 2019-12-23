@@ -1,0 +1,27 @@
+<div class="commons-container d-flex justify-content-center align-items-center ">
+  <mat-card class="session-expire-card">
+    <div >
+        <img mat-card-image src="https://www.thesslstore.com/blog/wp-content/uploads/2018/12/Certificate-Expiration-Icon-1-300x300.png" height="200"
+       alt="Photo of a Shiba Inu">
+    </div>
+    <mat-card-content>
+      <table cellspacing="0">
+        <tr>
+          <td colspan="2">
+            <h3>Session Expired</h3>
+            <p>
+              Your session has expired. Please login again to continue working
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button mat-stroked-button color="primary" (click)="backToLogin()">
+              Go to login page
+            </button>
+          </td>
+        </tr>
+      </table>
+    </mat-card-content>
+  </mat-card>
+</div>

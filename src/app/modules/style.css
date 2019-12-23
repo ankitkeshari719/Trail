@@ -1,0 +1,209 @@
+.module-container {
+  width: 100%;
+  margin: 0px !important;
+}
+
+.dialog-container {
+  width: 456px;
+}
+
+.commons-full-width {
+  width: 100%;
+}
+
+.loading-shade {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: auto;
+  width: 100%;
+  left: 0;
+  height: 100%;
+  background: rgba(203, 234, 82, 0.22);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dashboard-header-detail {
+  width: 100%;
+  margin: 0px !important;
+}
+
+.dashboard_count {
+  text-align: left;
+  font-weight: lighter;
+  font-size: 40px;
+  font-family: 'Open Sans', sans-serif;
+  letter-spacing: 0;
+  color: #4B5F7A;
+  opacity: 1;
+}
+
+.dashboard-cout-lable_1 {
+  text-align: left;
+  font-weight: 400;
+  font-size: 16px;
+  font-family: 'Titillium Web', sans-serif;
+  letter-spacing: 0;
+  color: #435C77;
+  opacity: 1;
+}
+
+.dashboard-cout-lable_2 {
+  text-align: left;
+  font-weight: bold;
+  font-size: 18px;
+  font-family: 'Titillium Web', sans-serif;
+  letter-spacing: 0;
+  color: #435C77;
+  opacity: 1;
+}
+
+.dashboard-cout-lable_3 {
+  text-align: left;
+  font-weight: lighter;
+  font-size: 26px;
+  font-family: 'Open Sans', sans-serif;
+  letter-spacing: 0;
+  opacity: 1;
+}
+
+.dashboard-cout-lable_4 {
+  text-align: center;
+  font-weight: bold;
+  font-size: 14px;
+  color: #435C77;
+  font-family: 'Titillium Web', sans-serif;
+  letter-spacing: 0;
+  opacity: 1;
+}
+
+.project-logo-width {
+  max-width: 12.666667%;
+}
+
+.project-table-logo {
+  font-weight: 600;
+  font-size: 18px;
+  font-family: 'Titillium Web', sans-serif;
+  letter-spacing: 0;
+  text-align: left;
+  color: #084968;
+  text-transform: uppercase;
+  opacity: 1;
+}
+
+.project-table-rag {
+  width: 84px;
+  height: 24px;
+  border-radius: 11px;
+  border-style: solid;
+  border-width: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+}
+
+.project-table-action {
+  width: 84px;
+  height: 24px;
+  border-radius: 11px;
+  border-style: solid;
+  border-width: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+}
+
+.project-table-items {
+  font-weight: normal;
+  font-size: 9px;
+  font-family: 'Titillium Web', sans-serif;
+  text-align: left;
+  letter-spacing: 0;
+  color: #4B5F7A;
+  opacity: 1;
+}
+
+.info-content {
+  text-align: justify;
+  white-space: normal;
+  font-weight: 300;
+  font-size: 0.7rem;
+  background-color: #e7ebf0 !important;
+}
+
+.add-project-description {
+  text-align: justify;
+  white-space: normal;
+  font-weight: 300;
+  font-size: 0.7rem;
+}
+
+/* Table styles */
+.table-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.mat-table {
+  overflow: auto;
+  max-height: 300px;
+}
+
+.mat-column-select {
+  overflow: visible;
+}
+
+mat-header-cell,
+mat-header-row,
+.mat-header-cell-def {
+  font-weight: bold;
+  color: black;
+  font-size: 11px;
+  margin-bottom: 2px;
+  top: 2;
+  position: sticky;
+  z-index: 1 !important;
+}
+
+mat-row,
+mat-cell {
+  font-size: 9px;
+}
+
+mat-footer-row,
+mat-row {
+  min-height: 35px;
+}
+
+.driversheet-container {
+  min-height: calc(100vh - 230px);
+}
+
+.name-view {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+@media only screen and (max-width: 736px) and (orientation:portrait) {
+
+  mat-header-row,
+  mat-row {
+    width: 200%;
+  }
+}
+
+#modal td,
+th {
+  padding: 10px;
+  border: 1px solid #dee2e6 !important;
+}
+
+.view-modal-card {
+  box-shadow: 0 0px 0px -0px rgba(0, 0, 0, .2), 0 0px 0px 0 rgba(0, 0, 0, .14), 0 0px 0px 0 rgba(0, 0, 0, .12);
+}

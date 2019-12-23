@@ -1,0 +1,75 @@
+<div class="module-container">
+  <div class="row border m-3">
+    <div class="col-md-3 info-content p-3">
+      <p class="font-weight-bold">
+        Update Role Information
+      </p>
+      <p>
+        <small>
+          {{info_description}}
+        </small>
+      </p>
+    </div>
+    <div class="col-md-9 p-3">
+      <div class="loading-shade" *ngIf="isLoading">
+        <mat-spinner *ngIf="isLoading"></mat-spinner>
+      </div>
+      <div class="row module-container">
+        <div class="col-lg-12">
+          <form *ngIf="assignUserRoleForm" [formGroup]="assignUserRoleForm" #formDirective="ngForm"
+            (ngSubmit)="onSubmit(assignUserRoleForm.value, formDirective)" class="form">
+            <table class="commons-full-width">
+              <tr>
+                <td>
+                  <mat-form-field class="commons-full-width form-element">
+                    <mat-label>Select User</mat-label>
+                    <mat-select formControlName="userName">
+                      <mat-option *ngFor="let user of users" [value]="user.id">
+                        {{user?.name}}
+                      </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="
+                  !assignUserRoleForm.controls['userName'].valid &&
+                  assignUserRoleForm.controls['userName'].touched
+                ">
+                      {{ getErrorUserName() }}
+                    </mat-error>
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <mat-form-field class="commons-full-width form-element">
+                    <mat-label>Select Role</mat-label>
+                    <mat-select formControlName="roleId">
+                      <mat-option *ngFor="let role of roles" [value]="role.id">
+                        {{role?.name}}
+                      </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="
+                  !assignUserRoleForm.controls['roleId'].valid &&
+                  assignUserRoleForm.controls['roleId'].touched
+                ">
+                      {{ getErrorRole() }}
+                    </mat-error>
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr class="d-flex justify-content-end">
+                <td>
+                  <button mat-raised-button class="button mr-2" type="button" color="warn"
+                    (click)="backToDashboard()">Cancel</button>
+                  <button mat-raised-button color="primary" type="submit" class="button"
+                    [disabled]="!assignUserRoleForm.valid">
+                    Update
+                  </button>
+                </td>
+              </tr>
+            </table>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

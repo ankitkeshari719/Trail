@@ -1,0 +1,88 @@
+<div class="row module-container">
+  <div class="project-logo-width col-md-2 col-12 d-flex justify-content-start align-items-center p-0">
+    <span class="project-table-logo">MY PROJECTS</span>
+  </div>
+  <div class="col-md-6 col-6 d-flex justify-content-start p-0">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter" />
+    </mat-form-field>
+  </div>
+</div>
+<div class="module-container">
+  <div class="table-container mat-elevation-z8">
+    <mat-table #table [dataSource]="dataSource" matSort>
+      <!-- Project Name Column -->
+      <ng-container matColumnDef="projectName">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Project Name </mat-header-cell>
+        <mat-cell *matCellDef="let element" (click)="viewProject(element.projectId)"> <span
+            class="name-view project-table-items">{{element?.projectName}}</span> </mat-cell>
+      </ng-container>
+
+      <!-- Type Column -->
+      <ng-container matColumnDef="type">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Type </mat-header-cell>
+        <mat-cell *matCellDef="let element"> <span class="project-table-items">{{element?.type}}</span> </mat-cell>
+      </ng-container>
+
+      <!-- RAG Column -->
+      <ng-container matColumnDef="projectStatus">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> RAG </mat-header-cell>
+        <mat-cell *matCellDef="let element;">
+          <div class="project-table-rag"
+            [ngStyle]="{'border-color':getRagStyle(element?.projectStatus),'color':getRagStyle(element?.projectStatus) }">
+            {{element.projectStatus}}</div>
+        </mat-cell>
+      </ng-container>
+
+      <!-- Total HMR Column -->
+      <ng-container matColumnDef="targetHours">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Total HMR </mat-header-cell>
+        <mat-cell *matCellDef="let element"> <span class="project-table-items">{{element?.targetHours}}</span></mat-cell>
+      </ng-container>
+
+      <!-- Completed HMR Column -->
+      <ng-container matColumnDef="completedHours">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Completed HMR </mat-header-cell>
+        <mat-cell *matCellDef="let element"><span class="project-table-items">{{element?.completedHours}}</span></mat-cell>
+      </ng-container>
+
+      <!-- No. of Machines Column -->
+      <ng-container matColumnDef="numberOfMachines">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> No. of Machines </mat-header-cell>
+        <mat-cell *matCellDef="let element"><span class="project-table-items">{{element?.numberOfMachines}}</span></mat-cell>
+      </ng-container>
+
+      <!-- Created At Column -->
+      <ng-container matColumnDef="createdOn">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Created At </mat-header-cell>
+        <mat-cell *matCellDef="let element"><span class="project-table-items">{{element?.createdOn}}</span></mat-cell>
+      </ng-container>
+
+      <!-- Timeline Column -->
+      <ng-container matColumnDef="timeline">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Timeline </mat-header-cell>
+        <mat-cell *matCellDef="let element"> <img [src]="dashboard_timeline_image" width="57px" height="40px"
+            alt="Cinque Terre" />
+        </mat-cell>
+      </ng-container>
+
+      <!-- Actions Column -->
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
+        <mat-cell *matCellDef="let element" (click)="$event.stopPropagation()">
+          <div class="project-table-rag" (click)="onEdit(element.projectId)"
+            [ngStyle]="{'border-color':getActionStyle(element?.projectStatus),'color':getActionStyle(element?.projectStatus) }">
+            EDIT</div>
+          <div class="project-table-rag ml-1" (click)="onDelete(element.projectId)"
+            [ngStyle]="{'border-color':getActionStyle(element?.projectStatus),'color':getActionStyle(element?.projectStatus) }">
+            DELETE</div>
+        </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="projectColumns; sticky: true"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: projectColumns;">
+      </mat-row>
+    </mat-table>
+    <mat-paginator [length]="resultsLength" [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="5" [pageIndex]="0">
+    </mat-paginator>
+  </div>
+</div>

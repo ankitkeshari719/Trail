@@ -1,0 +1,31 @@
+<div class="row dashboard-header-detail">
+  <div class="col-lg-3 col-12 d-flex justify-content-start align-items-center p-0">
+    <span class="project-table-logo">MACHINES</span>
+  </div>
+  <div class="col-lg-9 col-12 d-flex justify-content-start p-0">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter" />
+    </mat-form-field>
+  </div>
+</div>
+<div class="table-container mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource" matSort>
+
+    <!-- Machine Column -->
+    <ng-container matColumnDef="machineName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Machine </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element?.machineName}} </mat-cell>
+    </ng-container>
+
+    <!-- Assigned Project Column -->
+    <ng-container matColumnDef="projectName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Assigned Project </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element?.projectName}} </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="machineColumns;sticky: true"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: machineColumns;">
+    </mat-row>
+  </mat-table>
+  <mat-paginator [length]="resultsLength" [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="5" [pageIndex]="0">
+  </mat-paginator>
+</div>

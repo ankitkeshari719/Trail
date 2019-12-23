@@ -1,0 +1,51 @@
+<div class="row dashboard-header-detail">
+  <div class="col-lg-2 col-12 d-flex justify-content-start align-items-center p-0">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter" />
+    </mat-form-field>
+  </div>
+</div>
+<div class="table-container mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="userName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+      <mat-cell *matCellDef="let element" (click)="viewUser(element.assignedUserName,element.roleName,element.plantName,element.active,element.mobileNumber)"><span
+          class="name-view">{{element?.assignedUserName}}</span></mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="roleName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Role </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element?.roleName}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="plantName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Plant </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element?.plantName}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="active">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Active</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element?.active}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="mobileNumber">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Mobile Number </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element?.mobileNumber}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
+      <mat-cell *matCellDef="let element; let index=index;" (click)="$event.stopPropagation()">
+        <button mat-button (click)="deleteProjectUser(element.projectUserId)">
+          <mat-icon>delete</mat-icon>
+        </button>
+        <button mat-button
+          (click)="onEditUser(index,element.projectUserId,element.assignedUser,element.assignedUserName,element.mobileNumber,element.plantId,element.role,element.active)">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="userColumns;sticky: true"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: userColumns;">
+    </mat-row>
+  </mat-table>
+  <mat-paginator [length]="resultsLength" [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="5" [pageIndex]="0">
+  </mat-paginator>
+</div>

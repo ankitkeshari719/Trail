@@ -1,0 +1,68 @@
+<div class="row dashboard-header-detail">
+  <div class="col-lg-2 col-12 d-flex justify-content-start align-items-center p-0">
+      <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter" />
+    </mat-form-field>
+  </div>
+</div>
+<div class="table-container mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource" matSort>
+
+    <!-- Machine Column -->
+    <ng-container matColumnDef="machineName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Machine </mat-header-cell>
+      <mat-cell *matCellDef="let element" (click)="viewMachine(element.machineName,element.modelName,element.plantName,element.platformName,element.vin,element.active,element.targetHours)" ><span  class="name-view">{{element?.machineName}}</span></mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="modelName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Model </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element?.modelName}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="plantName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Plant </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element?.plantName}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="platformName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Platform </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element?.platformName}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="vin">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> VIN </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element?.vin}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="active">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Active</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element?.active}} </mat-cell>
+    </ng-container>
+
+    <!-- Assigned Project Column -->
+    <ng-container matColumnDef="targetHours">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Target Hours </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element?.targetHours}} </mat-cell>
+    </ng-container>
+
+
+          <!-- Actions Column -->
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
+        <mat-cell *matCellDef="let element; let index=index;" (click)="$event.stopPropagation()">
+          <button mat-button (click)="deleteProjectMachine(element.projectMachineId)">
+            <mat-icon>delete</mat-icon>
+          </button>
+          <button mat-button (click)="onEdit(index,element.projectMachineId,element.machineName,element.targetHours,element.vin,element.modelId,element.platformId,element.plantId,element.active)">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+    <mat-header-row *matHeaderRowDef="machineColumns;sticky: true"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: machineColumns;">
+    </mat-row>
+  </mat-table>
+  <mat-paginator [length]="resultsLength" [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="5" [pageIndex]="0">
+  </mat-paginator>
+</div>

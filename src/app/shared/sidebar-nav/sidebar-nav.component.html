@@ -1,0 +1,34 @@
+<div class="side-bar-container" [class.side-bar-is-mobile]="mobileQuery.matches">
+  <mat-toolbar class="side-bar-toolbar">
+    <mat-toolbar-row>
+      <button mat-icon-button (click)="snav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span class="logo-image border-left" (click)="backToLogin()"></span>
+      <span class="logo-text">Endurance Testing</span>
+      <span class="side-bar-fill-remaining-space"></span>
+      <span class="side-bar-spacer"></span>
+      <img [src]="imageUrl" width="28px" height="27px" class="rounded-circle m-1" alt="Cinque Terre" [matMenuTriggerFor]="menu"/>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="logout()">
+          <mat-icon>power_settings_new</mat-icon>
+          <span>Log Out</span>
+        </button>
+      </mat-menu>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <mat-sidenav-container class="side-bar-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav #snav [opened]="true" [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
+      fixedTopGap="56">
+      <mat-nav-list>
+        <a mat-list-item class="border-bottom border-white" [routerLink]="navEl.route" *ngFor="let navEl of fillerNav; let i = index;">
+          <img [src]="navEl.icon" width="28px" height="27px" alt="menu" [title]="navEl.tooltip"/>
+        </a>
+        <!-- <app-menu-list-item *ngFor="let item of navItems" [item]="item"></app-menu-list-item> -->
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <ng-content></ng-content>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

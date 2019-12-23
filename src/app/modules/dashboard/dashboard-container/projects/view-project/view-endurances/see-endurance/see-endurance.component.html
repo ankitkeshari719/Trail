@@ -1,0 +1,22 @@
+<div class="modal-header dialog-container">
+  <h4 class="modal-title">{{data.enduranceCycleName}}</h4>
+  <button type="button" class="close" aria-label="Close" (click)="onDismiss()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <table id="modal" class="dialog-container">
+    <tr>
+      <td class="font-weight-bold">Instruction:</td>
+      <td>{{data.instruction}}</td>
+    </tr>
+    <tr>
+      <td class="font-weight-bold">Unit:</td>
+      <td>{{data.unit}}</td>
+    </tr>
+    <tr>
+      <td class="font-weight-bold">Efforts:</td>
+      <td>{{data.efforts}}</td>
+    </tr>
+  </table>
+</div>

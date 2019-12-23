@@ -1,0 +1,34 @@
+<div class="modal-header dialog-container">
+  <h4 class="modal-title">{{data.machineName}}</h4>
+  <button type="button" class="close" aria-label="Close" (click)="onDismiss()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <table id="modal" class="dialog-container">
+    <tr>
+      <td class="font-weight-bold">Model Name:</td>
+      <td>{{data.modelName}}</td>
+    </tr>
+    <tr>
+      <td class="font-weight-bold">Plant Name::</td>
+      <td>{{data.plantName}}</td>
+    </tr>
+    <tr>
+      <td class="font-weight-bold">Platform Name:</td>
+      <td>{{data.platformName}}</td>
+    </tr>
+    <tr>
+      <td class="font-weight-bold">VIN:</td>
+      <td>{{data.vin}}</td>
+    </tr>
+    <tr>
+      <td class="font-weight-bold">Target Hours:</td>
+      <td>{{data.targetHours}}</td>
+    </tr>
+    <tr>
+      <td class="font-weight-bold">Active:</td>
+      <td>{{data.active}}</td>
+    </tr>
+  </table>
+</div>

@@ -1,0 +1,103 @@
+<div class="loading-shade" *ngIf="isLoading">
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+</div>
+<div class="row module-container dialog-container">
+  <div class="col-lg-12">
+    <form *ngIf="machineForm" [formGroup]="machineForm" #formDirective="ngForm"
+      (ngSubmit)="editMachine(machineForm.value, formDirective)" class="form">
+      <table class="commons-full-width">
+        <tr>
+          <td>
+            <mat-form-field class="commons-full-width">
+              <input matInput placeholder="Machine Name" formControlName="machineName" />
+              <mat-error *ngIf="
+              !machineForm.controls['machineName'].valid &&
+              machineForm.controls['machineName'].touched
+            ">
+                {{ getMachineNameError() }}
+              </mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="form-element commons-full-width">
+              <mat-select placeholder="Select Platform" formControlName="platformId">
+                <mat-option *ngFor="let platform of platformList" [value]="platform.id">
+                  {{ platform?.name }}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="
+              !machineForm.controls['platformId'].valid &&
+              machineForm.controls['platformId'].touched
+            ">
+                {{ getPlatformError() }}
+              </mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="form-element commons-full-width">
+              <mat-select placeholder="Select Plant" formControlName="plantId">
+                <mat-option *ngFor="let plant of plantList" [value]="plant.id">
+                  {{ plant?.name }}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="
+              !machineForm.controls['plantId'].valid &&
+              machineForm.controls['plantId'].touched
+            ">
+                {{ getPlantError() }}
+              </mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="form-element commons-full-width">
+              <mat-select placeholder="Select Model" formControlName="modelId">
+                <mat-option *ngFor="let model of modelList" [value]="model.id">
+                  {{ model?.name }}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="
+              !machineForm.controls['modelId'].valid &&
+              machineForm.controls['modelId'].touched
+            ">
+                {{ getModelError() }}
+              </mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="commons-full-width">
+              <input matInput placeholder="Target Hours" formControlName="targetHours" />
+              <mat-error *ngIf="
+              !machineForm.controls['targetHours'].valid &&
+              machineForm.controls['targetHours'].touched
+            ">
+                {{ getTargetHoursError() }}
+              </mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-checkbox formControlName="active">Active</mat-checkbox>
+          </td>
+        </tr>
+        <tr class="d-flex justify-content-end">
+          <td>
+            <button mat-raised-button class="button mr-2" type="button" color="warn" (click)="onNoClick()"
+              tabindex="-1">Cancel</button>
+            <button mat-raised-button color="primary" type="submit" [mat-dialog-close]="1" class="button"
+              [disabled]="!machineForm.valid">
+              Edit Machine </button>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+</div>

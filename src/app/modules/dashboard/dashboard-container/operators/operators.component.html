@@ -1,0 +1,32 @@
+<div class="row dashboard-header-detail">
+  <div class="col-md-3 col-12 d-flex justify-content-start align-items-center p-0">
+    <span class="project-table-logo">Operators</span>
+  </div>
+  <div class="col-md-6 col-6 d-flex justify-content-start p-0">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter" />
+    </mat-form-field>
+  </div>
+</div>
+<div class="table-container mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource" matSort>
+
+    <!-- Operator Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Operator </mat-header-cell>
+      <mat-cell *matCellDef="let element"><img [src]="element.imageUrl" width="28px" height="27px" class="rounded-circle m-1" alt="Cinque Terre"/>{{element?.name}} </mat-cell>
+    </ng-container>
+
+    <!-- Assigned Project Column -->
+    <ng-container matColumnDef="projectName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Assigned Project </mat-header-cell>
+      <mat-cell *matCellDef="let element"><span class="project-table-items">{{element?.projectName}}</span></mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="operatorsColumns; sticky: true"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: operatorsColumns;">
+    </mat-row>
+  </mat-table>
+  <mat-paginator [length]="resultsLength" [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="5" [pageIndex]="0">
+  </mat-paginator>
+</div>

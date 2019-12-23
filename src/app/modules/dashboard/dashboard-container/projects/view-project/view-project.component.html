@@ -1,0 +1,115 @@
+<div class="loading-shade" *ngIf="isLoading">
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+</div>
+<div class="row module-container">
+  <div class="col-md-2">
+    <div class="row commons-full-width">
+      <div class="col-12">
+        <div class="d-flex flex-column">
+          <small>Project Type</small>
+          <b class="font-weight-bold">{{projectDetails?.type}}</b>
+        </div>
+      </div>
+    </div>
+    <div class="row commons-full-width">
+      <div class="col-12 mt-3">
+        <div class="d-flex flex-column">
+          <small>RAG Status</small>
+          <b class="font-weight-bold" [ngStyle]="{'color':getRagStyle('Red')}">Amber</b>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 border-left">
+    <div class="row commons-full-width">
+      <div class="col-12">
+        <div class="d-flex flex-column">
+          <small>Description</small>
+          <b class="font-weight-bold">{{projectDetails?.description}}</b>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2 border-left">
+    <div class="row commons-full-width">
+      <div class="col-12">
+        <div class="d-flex flex-column">
+          <small>Start Date</small>
+          <b class="font-weight-bold">{{projectDetails?.startDate}}</b>
+        </div>
+      </div>
+    </div>
+    <div class="row commons-full-width">
+      <div class="col-12 mt-3">
+        <div class="d-flex flex-column">
+          <small>End Date</small>
+          <b class="font-weight-bold">{{projectDetails?.endDate}}</b>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2 border-left">
+    <div class="row commons-full-width">
+      <div class="col-12">
+        <div class="d-flex flex-column">
+          <small>Target Hours</small>
+          <b class="font-weight-bold">{{projectDetails?.targetHours}}</b>
+        </div>
+      </div>
+    </div>
+    <div class="row commons-full-width">
+      <div class="col-12 mt-3">
+        <div class="d-flex flex-column">
+          <small>Completed Hours</small>
+          <b class="font-weight-bold">{{projectDetails?.completedHours}}</b>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2 border-left">
+    <div class="row commons-full-width">
+      <div class="col-12">
+        <div class="d-flex flex-column">
+          <small>Total Machine</small>
+          <b class="font-weight-bold">{{machineCount}}</b>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row module-container">
+  <nav class="navbar navbar-expand navbar-light commons-full-width pl-2 border-bottom">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="machines" routerLinkActive="active">MACHINES <span
+              class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="members" routerLinkActive="active">MEMBERS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="endurances" routerLinkActive="active">ENDURANCE CYCLE</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="driversheets" routerLinkActive="active">DRIVER SHEETS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="timelines" routerLinkActive="active">TIMELINE</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="comments" routerLinkActive="active">COMMENTS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="faults" routerLinkActive="active">FAULTS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="report" routerLinkActive="active">REPORTS</a>
+        </li>
+      </ul>
+    </nav>
+</div>
+<div class="row module-container commons-full-width">
+  <div class="col-md-12">
+    <router-outlet></router-outlet>
+  </div>
+</div>

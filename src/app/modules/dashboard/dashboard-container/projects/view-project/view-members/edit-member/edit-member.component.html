@@ -1,0 +1,86 @@
+<div class="loading-shade" *ngIf="isLoading">
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+</div>
+<div class="row module-container dialog-container">
+  <div class="col-lg-12">
+    <form *ngIf="userForm" [formGroup]="userForm" #formDirective="ngForm"
+      (ngSubmit)="editUser(userForm.value, formDirective)" class="form">
+      <table class="commons-full-width">
+        <tr>
+          <td>
+            <mat-form-field class="commons-full-width">
+              <input matInput placeholder="User Name" formControlName="assignedUserName" />
+              <mat-error *ngIf="
+              !userForm.controls['assignedUserName'].valid &&
+              userForm.controls['assignedUserName'].touched
+            ">
+                {{ getUserNameError() }}
+              </mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="form-element commons-full-width">
+              <mat-select placeholder="Select Role" formControlName="role">
+                <mat-option *ngFor="let role of roleList" [value]="role.id">
+                  {{ role?.name }}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="
+              !userForm.controls['role'].valid &&
+              userForm.controls['role'].touched
+            ">
+                {{ getRoleError() }}
+              </mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="form-element commons-full-width">
+              <mat-select placeholder="Select Plant" formControlName="plantId">
+                <mat-option *ngFor="let plant of plantList" [value]="plant.id">
+                  {{ plant?.name }}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="
+              !userForm.controls['plantId'].valid &&
+              userForm.controls['plantId'].touched
+            ">
+                {{ getPlantError() }}
+              </mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="commons-full-width">
+              <input matInput placeholder="Mobile No." formControlName="mobileNumber" />
+              <mat-error *ngIf="
+              !userForm.controls['mobileNumber'].valid &&
+              userForm.controls['mobileNumber'].touched
+            ">
+                {{ getMobileNumberError() }}
+              </mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-checkbox formControlName="active">Active</mat-checkbox>
+          </td>
+        </tr>
+        <tr class="d-flex justify-content-end">
+          <td>
+            <button mat-raised-button class="button mr-2" type="button" color="warn" (click)="onNoClick()"
+              tabindex="-1">Cancel</button>
+            <button mat-raised-button color="primary" type="submit" [mat-dialog-close]="1" class="button"
+              [disabled]="!userForm.valid">
+              Edit Machine </button>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+</div>

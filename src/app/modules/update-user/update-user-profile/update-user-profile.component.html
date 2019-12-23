@@ -1,0 +1,150 @@
+<div class="module-container">
+  <div class="row border m-3">
+    <div class="col-md-3 info-content p-3">
+      <p class="font-weight-bold">
+        Update User Information
+      </p>
+      <p>
+        <small>
+          {{info_description}}
+        </small>
+      </p>
+    </div>
+    <div class="col-md-9 p-3">
+      <div class="loading-shade" *ngIf="isLoading">
+        <mat-spinner *ngIf="isLoading"></mat-spinner>
+      </div>
+      <div class="row module-container">
+        <div class="col-12">
+          <mat-form-field class="commons-full-width">
+            <mat-label>Select User</mat-label>
+            <mat-select [(ngModel)]="selectedUserId" (selectionChange)="onUserSelection($event.value)">
+              <mat-option *ngFor="let user of userlist" [value]="user.id">
+                {{ user?.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row module-container">
+        <div class="col-lg-12">
+          <form *ngIf=registerForm [formGroup]="registerForm" #formDirective="ngForm"
+            (ngSubmit)="onSubmit(registerForm.value,formDirective)" class="form">
+            <table class="commons-full-width">
+              <tr>
+                <td>
+                  <mat-form-field class=" commons-full-width form-element">
+                    <input matInput placeholder="First Name" formControlName="firstName" />
+                    <mat-error *ngIf="
+                  !registerForm.controls['firstName'].valid &&
+                  registerForm.controls['firstName'].touched
+                ">
+                      {{ getErrorFirstName() }}
+                    </mat-error>
+                  </mat-form-field>
+                </td>
+                <td>
+                  <mat-form-field class="commons-full-width form-element">
+                    <input matInput placeholder="Last Name" formControlName="lastName" />
+
+                    <mat-error *ngIf="
+                  !registerForm.controls['lastName'].valid &&
+                  registerForm.controls['lastName'].touched
+                ">
+                      {{ getErrorLastName() }}
+                    </mat-error>
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  <mat-form-field class="form-element commons-full-width">
+                    <input matInput placeholder="Email" formControlName="userEmail" />
+                    <mat-error *ngIf="
+                  !registerForm.controls['userEmail'].valid &&
+                  registerForm.controls['userEmail'].touched
+                ">
+                      {{ getErrorEmail() }}
+                    </mat-error>
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  <mat-form-field class="form-element commons-full-width">
+                    <mat-select placeholder="Select address" formControlName="address">
+                      <mat-option *ngFor="let location of locations" [value]="location.id">
+                        {{ location?.name }}
+                      </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="
+              !registerForm.controls['address'].valid &&
+              registerForm.controls['address'].touched
+            ">
+                      {{ getLoationError() }}
+                    </mat-error>
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  <mat-form-field class="form-element commons-full-width">
+                    <mat-select placeholder="Select Roles" formControlName="roleId">
+                      <mat-option *ngFor="let role of roles" [value]="role.id">
+                        {{ role?.name }}
+                      </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="
+              !registerForm.controls['roleId'].valid &&
+              registerForm.controls['roleId'].touched
+            ">
+                      {{ getRoleError() }}
+                    </mat-error>
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  <mat-form-field class="form-element commons-full-width">
+                    <input matInput digitOnly placeholder="Enter phone No." maxlength="10" #phoneNumber
+                      formControlName="phoneNumber" />
+                    <mat-hint align="start"><strong>Only digit allow!</strong> </mat-hint>
+                    <mat-hint align="end">{{phoneNumber.value.length}} / 10</mat-hint>
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  <mat-form-field class="form-element commons-full-width">
+                    <input matInput placeholder="Enter country." formControlName="country" />
+                    <mat-error *ngIf="
+              !registerForm.controls['country'].valid &&
+              registerForm.controls['country'].touched
+            ">
+                      {{ getCountryError() }}
+                    </mat-error>
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  <mat-checkbox class="form-element commons-full-width" formControlName="active">Active</mat-checkbox>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" class="d-flex justify-content-start">
+                  <button mat-raised-button class="button mr-2" type="button" color="warn"
+                    (click)="backToDashboard()">Cancel</button>
+                  <button mat-raised-button color="primary" type="submit" class="button"
+                    [disabled]="!registerForm.valid">
+                    Update
+                  </button>
+                </td>
+              </tr>
+            </table>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

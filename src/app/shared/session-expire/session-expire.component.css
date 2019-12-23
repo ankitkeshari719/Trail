@@ -1,0 +1,14 @@
+.commons-container {
+  width: 100%;
+  height: 100%;
+  margin: 0px !important;
+}
+.session-expire-card {
+  max-width: 500px;
+  max-height: 400px;
+  box-shadow: 1px 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.mat-card-image {
+    margin: 0 0px 0px -16px !important;
+}
+

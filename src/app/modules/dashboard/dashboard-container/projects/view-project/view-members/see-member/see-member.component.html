@@ -1,0 +1,26 @@
+<div class="modal-header dialog-container">
+  <h4 class="modal-title">{{data.assignedUserName}}</h4>
+  <button type="button" class="close" aria-label="Close" (click)="onDismiss()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <table id="modal" class="dialog-container">
+    <tr>
+      <td class="font-weight-bold">Role Name:</td>
+      <td>{{data.roleName}}</td>
+    </tr>
+    <tr>
+      <td class="font-weight-bold">Mobile No.:</td>
+      <td>{{data.mobileNumber}}</td>
+    </tr>
+    <tr>
+      <td class="font-weight-bold">Plant Name:</td>
+      <td>{{data.plantName}}</td>
+    </tr>
+    <tr>
+      <td class="font-weight-bold">Active:</td>
+      <td>{{data.active}}</td>
+    </tr>
+  </table>
+</div>

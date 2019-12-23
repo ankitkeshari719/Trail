@@ -1,0 +1,51 @@
+.module-container {
+  width: 100%;
+  margin: 0px !important;
+}
+
+.header-name {
+  top: 110px;
+  height: 39px;
+  text-align: left;
+  font-family: 'Titillium Web', sans-serif;
+  font-weight: bold;
+  font-size: 26px;
+  letter-spacing: 0;
+  color: #084968;
+  opacity: 1;
+}
+
+.header-loginIn-welcome {
+  top: 0px;
+  font-family: 'Titillium Web, Regular', sans-serif;
+  font-size: 15px;
+  text-align: right;
+  font-weight: 100;
+  letter-spacing: 0;
+  color: #435C77;
+}
+
+.header-user-lost-login {
+  top: 0px;
+  font-family: 'Titillium Web, Regular', sans-serif;
+  font-size: 10px;
+  text-align: right;
+  font-weight: 100;
+  letter-spacing: 0;
+  color: #706F6F;
+
+}
+
+td,
+th {
+  border: 1px solid #dee2e6 !important;
+  padding: 10px;
+}
+
+.view-modal-card {
+  box-shadow: 0 0px 0px -0px rgba(0, 0, 0, .2), 0 0px 0px 0 rgba(0, 0, 0, .14), 0 0px 0px 0 rgba(0, 0, 0, .12);
+}
+
+.dialog-container {
+  width: 456px;
+}

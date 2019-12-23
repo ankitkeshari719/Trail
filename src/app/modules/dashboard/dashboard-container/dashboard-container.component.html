@@ -1,0 +1,104 @@
+<div class="loading-shade" *ngIf="machineLoader && projectLoader && operatorLoader && isLoading">
+  <mat-spinner *ngIf="machineLoader && projectLoader && operatorLoader && isLoading"></mat-spinner>
+</div>
+<div class="row module-container">
+  <div class="col-lg-12">
+    <div class="row module-container">
+      <div class="col-lg-3 col-md-6 col-xs-12 pr-0">
+        <div class="row mr-md-0 border bg-light d-flex justify-content-center align-items-center">
+          <div class="col-md-4">
+            <img [src]="dashboard_folder_image" width="57px" height="40px" alt="Cinque Terre" />
+          </div>
+          <div class="col-md-4">
+            <span class="dashboard_count">{{
+              dashboardCounts?.projectsCount
+            }}</span>
+          </div>
+          <div class="col-md-4">
+            <div class="d-flex flex-column">
+              <span class="dashboard-cout-lable_1">Total</span>
+              <span class="dashboard-cout-lable_2">Projects</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 col-xs-12 pr-0">
+        <div class="row mr-md-0 border bg-light d-flex justify-content-center align-items-center">
+          <div class="col-md-4">
+            <img [src]="dashboard_operator_image" width="57px" height="40px" alt="Cinque Terre" />
+          </div>
+          <div class="col-md-3">
+            <span class="dashboard_count">{{
+              dashboardCounts?.machineOperatorsCount
+            }}</span>
+          </div>
+          <div class="col-md-5">
+            <div class="d-flex flex-column">
+              <span class="dashboard-cout-lable_1">Total</span>
+              <span class="dashboard-cout-lable_2">Operators</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 col-xs-12">
+        <div class="row mr-md-0 border bg-light d-flex justify-content-center align-items-center">
+          <div class="col-md-4">
+            <img [src]="dashboard_machine_image" width="57px" height="40px" alt="Cinque Terre" />
+          </div>
+          <div class="col-md-3">
+            <span class="dashboard_count">{{
+              dashboardCounts?.machinesCount
+            }}</span>
+          </div>
+          <div class="col-md-5">
+            <div class="d-flex flex-column">
+              <span class="dashboard-cout-lable_1">Total</span>
+              <span class="dashboard-cout-lable_2">Machines</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 col-xs-12 pr-0">
+        <div class="row  mr-md-0 border bg-light">
+          <div class="col-4 d-flex justify-content-center align-items-start">
+            <div class="d-flex flex-column">
+              <span class="dashboard-cout-lable_3" style="color:#ad0000;">{{
+                dashboardCounts?.redCount
+              }}</span>
+              <span class="dashboard-cout-lable_4">Red</span>
+            </div>
+          </div>
+          <div class="col-4 d-flex justify-content-center align-items-start">
+            <div class="d-flex flex-column">
+              <span class="dashboard-cout-lable_3" style="color: #FFBF00">{{
+                dashboardCounts?.amberCount
+              }}</span>
+              <span class="dashboard-cout-lable_4">Amber</span>
+            </div>
+          </div>
+          <div class="col-4 d-flex justify-content-center align-items-start">
+            <div class="d-flex flex-column">
+              <span class="dashboard-cout-lable_3" style="color:green;">{{
+                dashboardCounts?.greenCount
+              }}</span>
+              <span class="dashboard-cout-lable_4">Green</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row module-container">
+  <div class="col-lg-12">
+    <app-projects (projectLoaderEvent)="receiveProjectLoader($event)"></app-projects>
+  </div>
+</div>
+<div class="row module-container">
+  <div class="col-lg-6 col-12">
+    <app-operators (operatorLoaderEvent)="receiveOperaotrLoader($event)"></app-operators>
+  </div>
+  <div class="col-lg-6 col-12">
+    <app-machines (machineLoaderEvent)="receiveMachineLoader($event)"></app-machines>
+  </div>
+</div>

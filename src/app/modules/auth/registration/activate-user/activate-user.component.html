@@ -1,0 +1,83 @@
+<div class="loading-shade" *ngIf="isLoading">
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+</div>
+<mat-card class="auth-card">
+  <mat-card-content>
+    <form *ngIf="registrationForm" [formGroup]="registrationForm" #formDirective="ngForm" (ngSubmit)="onSubmit(registrationForm.value, formDirective)" class="form">
+      <table cellspacing="0">
+        <tr>
+          <td colspan="2">
+            <h2>Activate your account</h2>
+            <p>
+              Enter your default password that's sent on your mail.
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <mat-form-field class="auth-full-width">
+              <input matInput placeholder="Email" formControlName="email" />
+              <mat-error *ngIf="
+                  !registrationForm.controls['email'].valid &&
+                  registrationForm.controls['email'].touched
+                ">
+                {{ getErrorEmail() }}
+              </mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr >
+          <td colspan="2">
+            <mat-form-field class="auth-full-width form-element">
+              <input matInput placeholder="Default / Old Password" formControlName="oldPassword"
+                [type]="hide_1 ? 'password' : 'text'">
+              <mat-hint>Default / Old password is sent to your mail.</mat-hint>
+              <button mat-icon-button matSuffix type="button" (click)="hide_1 = !hide_1" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide_1">
+                <mat-icon>{{hide_1 ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+              <mat-error
+                *ngIf="!registrationForm.controls['oldPassword'].valid && registrationForm.controls['oldPassword'].touched">
+                {{ getErrorOldPassword() }}
+              </mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="auth-full-width form-element">
+              <input matInput placeholder="New Password" formControlName="newPassword" [type]="hide_2 ? 'password' : 'text'">
+              <mat-hint>Choose a password of at least eight characters, one uppercase letter and one number
+              </mat-hint>
+              <button mat-icon-button matSuffix type="button" (click)="hide_2 = !hide_2" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide_2">
+                <mat-icon>{{hide_2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+              <mat-error
+                *ngIf="!registrationForm.controls['newPassword'].valid && registrationForm.controls['newPassword'].touched">
+                {{ getErrorPassword() }}
+              </mat-error>
+            </mat-form-field>
+          </td>
+          <td >
+            <mat-form-field class="auth-full-width">
+              <input matInput placeholder="Confirm Password" formControlName="confirmPassword">
+              <mat-error
+                *ngIf="!registrationForm.controls['confirmPassword'].valid && registrationForm.controls['confirmPassword'].touched">
+                {{ getErrorConfirmPassword() }}
+              </mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td class="pt-4">
+            <button mat-raised-button color="primary" type="submit" class="button" [disabled]="!registrationForm.valid">
+              Submit
+            </button>
+            <b><a (click)="backToLogin()" class="cancel-button">Cancel</a></b>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </mat-card-content>
+</mat-card>
